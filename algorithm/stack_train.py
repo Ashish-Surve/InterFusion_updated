@@ -19,12 +19,12 @@ from algorithm.stack_predict import PredictConfig
 
 class TrainConfig(mltk.Config):
     # training params
-    batch_size = 100
+    batch_size = 10
     pretrain_max_epoch = 20
     max_epoch = 20
     train_start = 0
     max_train_size = None  # `None` means full train set
-    initial_lr = 0.001
+    initial_lr = 0.01
     lr_anneal_factor = 0.5
     lr_anneal_epoch_freq = 10
     lr_anneal_step_freq = None
@@ -76,14 +76,14 @@ class ExpConfig(mltk.Config):
     test = PredictConfig()
 
     # debugging params
-    write_summary = False
-    write_histogram_summary = False
+    write_summary = True
+    write_histogram_summary = True
     check_numerics = False
     save_results = True
     save_ckpt = True
-    ckpt_epoch_freq = 10
+    ckpt_epoch_freq = 20
     ckpt_max_keep = 10
-    pretrain_ckpt_epoch_freq = 20
+    pretrain_ckpt_epoch_freq = 40
     pretrain_ckpt_max_keep = 10
 
     exp_dir_save_path = None    # The file path to save the exp dirs for batch run training on different datasets.

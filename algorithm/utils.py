@@ -55,6 +55,8 @@ def get_data_dim(dataset):
         return 38
     elif str(dataset).startswith('omi'):
         return 19
+    elif str(dataset).startswith('ga'):
+        return 14
     else:
         raise ValueError('unknown dataset '+str(dataset))
 

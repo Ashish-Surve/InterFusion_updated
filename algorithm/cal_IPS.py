@@ -40,7 +40,7 @@ def cal_IPS(path, dataset, mcmc, is_pretrain):
         try:
             tracker = pickle.load(open(path + 'mcmc_tracker.pkl', 'rb'))
         except:
-            raise FileNotFoundError('cannot find mcmc_tracker.pkl')
+            raise FileNotFoundError('cannot find mcmc_tracker.pkl',"  ",path)
         # preprocess tracker to get:
         # {idx_ed: best_score_mcmc (np.array(shape=[window_size, x_dim]))}
         for ed_idx in tracker:
@@ -133,6 +133,7 @@ def cal_IPS(path, dataset, mcmc, is_pretrain):
                     scores += temp
                     labels += [interpret_dict[interval] for _ in range(len(temp))]
                 assert len(scores) == len(labels)
+                
                 # compute Interpretation score
                 hit_rate_collector = []
                 for idx, dim_scores in enumerate(scores):

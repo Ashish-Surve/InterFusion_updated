@@ -24,20 +24,22 @@ class RNNCellType(str, Enum):
     LSTM = 'LSTM'
     Basic = 'Basic'
 
-
+# don't make chnages in the model params wo understanding arch.
 class ModelConfig(mltk.Config):
-    x_dim: int = -1
-    z_dim: int = 3
-    u_dim: int = 1
-    window_length = 100
-    output_shape: List[int] = [25, 25, 50, 50, 100]
-    z2_dim: int = 13
+    x_dim: int = -1     # x f(x)
+    z_dim: int = 3      # z1 f(x)
+    u_dim: int = 0
+    window_length = 16
+    # output_shape: List[int] = [25, 25, 50, 50, 100]
+    output_shape: List[int] = [4, 4, 8, 8, 16]     # seems like a layer from generative net rnn
+    z2_dim: int =  2  # not sure ??? 
     l2_reg = 0.0001
     posterior_flow_type: Optional[str] = mltk.config_field(choices=['rnvp', 'nf'], default='rnvp')
     # can be 'rnvp' for RealNVP, 'nf' for planarNF, None for not using posterior flow.
-    posterior_flow_layers = 20
-    rnn_cell: RNNCellType = RNNCellType.GRU  # can be 'GRU', 'LSTM' or 'Basic'
-    rnn_hidden_units = 500
+    # posterior_flow_layers = 20
+    posterior_flow_layers = 4
+    rnn_cell: RNNCellType = RNNCellType.Basic  # can be 'GRU', 'LSTM' or 'Basic'
+    rnn_hidden_units = 4
     use_leaky_relu = False
     use_bidirectional_rnn = False       # whether to use bidirectional rnn or not
     use_self_attention = False          # whether to use self-attention on hidden states before infer qz or not.

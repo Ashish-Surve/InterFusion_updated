@@ -1,3 +1,6 @@
+In this I was trying to run INterfusion using CPU and smaller size of all Neural Nets.
+
+
 # InterFusion
 
 **KDD 2021: Multivariate Time Series Anomaly Detection and Interpretation using Hierarchical Inter-Metric and Temporal Embedding**
